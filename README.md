@@ -19,7 +19,6 @@ The global financial landscape is vast and diverse. Yet, many individuals find i
 ## Tech Stack
 - **Frontend**: React, TypeScript, Zustand
 - **Backend**: Supabase (PostgreSQL)
-- **Hosting**: 
 
 ## Getting Started
 
@@ -47,4 +46,4 @@ The global financial landscape is vast and diverse. Yet, many individuals find i
    ```
 
 ## Acknowledgments
-Adjust and expand upon this template based on the specifics of your project and your development environment. Remember, a README is often the first thing someone sees when they visit your project repository, so make it informative and inviting.
+This project is a work in progress under CISSA's annual hackathon: Catalyst 2023 of the FinTech track. It is heavily inspired by Tinder and ultimately a whimsical project that should not be taken seriously by legal means.
