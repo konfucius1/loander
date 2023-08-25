@@ -1,13 +1,10 @@
-import { Button } from '@/components/ui/button'
-import { TabsDemo } from '@/pages/Home'
-import MyPage from './pages/MyPage'
-
+import { Home } from '@/pages/Home';
+import { NavBar } from '@/components/navbar';
 export default function App() {
   return (
     <div>
-      <MyPage />
-      <Button>Click me</Button>
-      <TabsDemo />
+      <NavBar />
+      <Home />
     </div>
-  )
+  );
 }
