@@ -3,10 +3,11 @@ import { Browse } from './pages/Browse';
 import { Home } from './pages/Home';
 import { NavBar } from './components/Navbar';
 import { Support } from './pages/Support';
+import Footer from './components/footer';
 
 export default function App() {
   return (
-    <div>
+    <div className="">
       <NavBar />
       <BrowserRouter>
         <Routes>
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/support" element={<Support />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
