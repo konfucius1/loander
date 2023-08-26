@@ -1,5 +1,5 @@
-import { SupportAccordion } from '@/components/support/SupportAccordion';
-import { SupportForm } from '@/components/support/SupportForm';
+import { SupportAccordion } from '@/components/support/SupportAccordion'
+import { SupportForm } from '@/components/support/SupportForm'
 
 const Header = () => {
   return (
@@ -10,8 +10,8 @@ const Header = () => {
         We're here to assist you!
       </h2>
     </section>
-  );
-};
+  )
+}
 
 export const Support = () => {
   return (
@@ -24,5 +24,5 @@ export const Support = () => {
         <SupportForm />
       </div>
     </>
-  );
-};
+  )
+}

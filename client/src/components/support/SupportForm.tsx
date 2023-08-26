@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -6,13 +6,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export function SupportForm() {
   return (
-    <Card className=" w-1/2">
+    <Card className="mt-8 mb-16 w-1/2">
       <CardHeader>
         <CardTitle>Contact us</CardTitle>
         <CardDescription>
@@ -45,5 +45,5 @@ export function SupportForm() {
         <Button>Submit</Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

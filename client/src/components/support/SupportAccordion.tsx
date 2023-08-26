@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
+} from '@/components/ui/accordion'
 
 export function SupportAccordion() {
   const accordionData = [
@@ -38,16 +38,19 @@ export function SupportAccordion() {
       answer:
         'Your safety is our top priority. If you encounter any suspicious activities or users, please report them immediately using our contact form below or email us directly at support@lendmate.com.',
     },
-  ];
+  ]
 
   return (
-    <Accordion type="single" collapsible className="w-full">
-      {accordionData.map((item) => (
-        <AccordionItem key={item.id} value={item.id}>
-          <AccordionTrigger>{item.question}</AccordionTrigger>
-          <AccordionContent>{item.answer}</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  );
+    <>
+      <h1 className="text-3xl font-medium">FAQs</h1>
+      <Accordion type="single" collapsible className="w-full">
+        {accordionData.map((item) => (
+          <AccordionItem key={item.id} value={item.id}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionContent>{item.answer}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </>
+  )
 }
