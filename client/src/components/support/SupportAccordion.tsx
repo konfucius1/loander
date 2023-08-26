@@ -9,9 +9,9 @@ export function SupportAccordion() {
   const accordionData = [
     {
       id: 'question-1',
-      question: 'How does LendMate ensure secure transactions?',
+      question: 'How does Loander ensure secure transactions?',
       answer:
-        'While LendMate provides a platform to match lenders and borrowers, all actual transactions are managed through trusted third-party payment platforms to ensure security and transparency.',
+        'While Loander provides a platform to match lenders and borrowers, all actual transactions are managed through trusted third-party payment platforms to ensure security and transparency.',
     },
     {
       id: 'question-2',
@@ -28,15 +28,15 @@ export function SupportAccordion() {
     },
     {
       id: 'question-4',
-      question: 'Is there a fee for using LendMate?',
+      question: 'Is there a fee for using Loander?',
       answer:
-        'As of now, LendMate is free to use for both lenders and borrowers. We aim to make financial connections accessible to everyone.',
+        'As of now, Loander is free to use for both lenders and borrowers. We aim to make financial connections accessible to everyone.',
     },
     {
       id: 'question-5',
       question: 'How can I report a user or a suspicious activity?',
       answer:
-        'Your safety is our top priority. If you encounter any suspicious activities or users, please report them immediately using our contact form below or email us directly at support@lendmate.com.',
+        'Your safety is our top priority. If you encounter any suspicious activities or users, please report them immediately using our contact form below or email us directly at support@Loander.com.',
     },
   ]
 
