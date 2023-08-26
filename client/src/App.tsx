@@ -1,13 +1,15 @@
-import { Button } from '@/components/ui/button';
-import { TabsDemo } from '@/pages/Home';
-import MyPage from './pages/MyPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Browse } from './pages/Browse'
+import { Home } from './pages/Home'
+import { NavBar } from './components/navbar'
 
 export default function App() {
   return (
     <div>
+      <NavBar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<div>Home</div>} />
+          <Route path="/" element={<Home />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/messages" element={<div>Messages</div>} />
           <Route path="/dashboard" element={<div>Dashboard</div>} />
@@ -15,5 +17,5 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </div>
-  );
+  )
 }
