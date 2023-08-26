@@ -34,7 +34,7 @@
 }
 
 .card {
-  padding: 2em;
+  /* padding: 2em; */
 }
 
 .read-the-docs {
@@ -97,7 +97,6 @@
 .line {
   /* position: absolute; */
   bottom: 0;
-  left: calc(50% - 40.71875rem); /* Center the line */
   width: 81.4375rem;
   height: 0.0625rem;
   background-color: black;
@@ -110,7 +109,7 @@
 }
 
 .text-box {
-  width: 48.887rem;
+  width: 54.875rem;
   height: 17.3125rem;
   flex-shrink: 0;
   border-radius: 1.25rem;
@@ -120,9 +119,44 @@
 }
 
 .text-box-typography {
+  padding: 20px;
   color: #fff;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.875rem; /* 150% */
+}
+
+.how-it-works-card {
+  width: 18.75rem;
+  height: 25rem;
+  flex-shrink: 0;
+}
+
+.how-it-works-image {
+  width: 13.87444rem;
+  height: 12.5rem;
+}
+
+.section-title {
+  color: #000;
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5625rem; /* 104.167% */
+}
+
+.center-grid {
+  display: grid;
+  place-items: center;
+  height: 100%; /* Ensure the grid takes up the full height */
+}
+
+.testimonial-section {
+  background: #191919;
+  padding: 0; /* Add padding for content */
+  text-align: center; /* Center text content */
+  color: white; /* Set text color */
+  width: 100%;
 }
