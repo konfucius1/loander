@@ -1,5 +1,6 @@
-import { Button } from '@/components/ui/button';
-import '../../App.css';
+import { Button } from '@/components/ui/button'
+import '../../App.css'
+import { RegisterDialog } from '../register/RegisterDialog'
 
 export default function Hero() {
   return (
@@ -17,10 +18,10 @@ export default function Hero() {
             Discover a new, intuitive way to match with financial peers. Whether
             you're lending or borrowing, we've got you covered.
           </p>
-          <Button className="mt-5">Get Started Today</Button>
+          <RegisterDialog />
         </div>
       </div>
       <img alt="Loander Logo" className="hero-image" src="hero_image.svg" />
     </div>
-  );
+  )
 }
