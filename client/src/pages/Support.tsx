@@ -1,4 +1,5 @@
 import { SupportAccordion } from '@/components/support/SupportAccordion';
+import { SupportForm } from '@/components/support/SupportForm';
 
 const Header = () => {
   return (
@@ -18,6 +19,9 @@ export const Support = () => {
       <div className="p-8">
         <Header />
         <SupportAccordion />
+      </div>
+      <div className="flex justify-center">
+        <SupportForm />
       </div>
     </>
   );
