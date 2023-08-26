@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Browse } from './pages/Browse'
+import { Button } from '@/components/ui/button';
+import { TabsDemo } from '@/pages/Home';
+import MyPage from './pages/MyPage';
 
 export default function App() {
   return (
@@ -14,5 +15,5 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
