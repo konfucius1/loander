@@ -31,7 +31,7 @@ export default function NavBar({ token, setToken }) {
         </Navbar.Link>
 
         <Navbar.Link href="/browse">Browse</Navbar.Link>
-        <Navbar.Link href="/messages">Messages</Navbar.Link>
+        <Navbar.Link href="/messages">Matches</Navbar.Link>
         <Navbar.Link href="/dashboard">Dashboard</Navbar.Link>
         <Navbar.Link href="/support">Support</Navbar.Link>
       </Navbar.Collapse>
