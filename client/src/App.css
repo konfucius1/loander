@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   /* padding: 2rem; */
-  text-align: center;
+  text-align: left;
 }
 
 .logo {
@@ -44,24 +44,85 @@
 /* Center the content on the screen */
 .hero {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensure the hero takes up the full viewport height */
-  background-color: #f0f0f0; /* Set a background color */
+  /* min-height: 100vh; */
+  margin-top: 0px;
+  /* background-color: #f0f0f0; */
+}
+
+/* Style the hero content container */
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; /* Ensure the content takes up the full width */
+}
+
+/* Style the text content */
+.text-content {
+  /* padding: 1rem; Adjust as needed */
+  flex: 1; /* Allow the text content to grow and take available space */
 }
 
 /* Style the hero text */
 .hero-text {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: bold;
-  color: #333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* color: #333; */
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
 }
 
 /* Style the tagline */
 .tagline {
-  font-size: 1.5rem;
-  margin-top: 10px; /* Add some spacing between the title and tagline */
-  color: #666; /* Adjust the color as needed */
+  font-size: 1.3rem;
+  margin-top: 10px;
+  /* color: #666; */
+}
+
+/* Style the subtitle */
+.subtitle {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Style the hero image */
+.hero-image {
+  width: 28.125rem;
+  height: 26.375rem;
+  flex-shrink: 0;
+  /* margin-right: 2rem; Adjust spacing between image and text */
+}
+
+.line {
+  /* position: absolute; */
+  bottom: 0;
+  left: calc(50% - 40.71875rem); /* Center the line */
+  width: 81.4375rem;
+  height: 0.0625rem;
+  background-color: black;
+}
+
+.intro-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 2rem; /* Adjust the gap between the image and the text box */
+}
+
+.text-box {
+  width: 48.887rem;
+  height: 17.3125rem;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #7c43b1;
+  padding: 1rem; /* Optional: Add padding to the content */
+  color: white; /* Optional: Set text color */
+}
+
+.text-box-typography {
+  color: #fff;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.875rem; /* 150% */
 }
