@@ -1,14 +1,28 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Browse } from './pages/Browse';
-import { Home } from './pages/Home';
-import { NavBar } from './components/Navbar';
-import { Support } from './pages/Support';
-import Footer from './components/footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Browse } from './pages/Browse'
+import { Home } from './pages/Home'
+import { NavBar } from './components/Navbar'
+import { Support } from './pages/Support'
+import Footer from './components/footer'
+import { useEffect, useState } from 'react'
 
 export default function App() {
+  const [token, setToken] = useState(false)
+
+  if (token) {
+    sessionStorage.setItem('token', JSON.stringify(token))
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      const data = JSON.parse(sessionStorage.getItem('token'))
+      setToken(data)
+    }
+  }, [])
+
   return (
     <div className="">
-      <NavBar />
+      <NavBar token={token} setToken={setToken} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,5 +34,5 @@ export default function App() {
       </BrowserRouter>
       <Footer />
     </div>
-  );
+  )
 }

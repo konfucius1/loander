@@ -11,8 +11,11 @@ import {
 import { Checkbox, Label, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { supabase } from '../../lib/client'
+// import { useUserStore } from '@/store/userStore'
 
-export function LoginDialog() {
+export function LoginDialog({ setToken }) {
+  // const login = useUserStore((state) => state.login)
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -40,7 +43,9 @@ export function LoginDialog() {
 
       if (error) throw error
       console.log(data)
+      setToken(data)
 
+      // login()
       //   alert('Check your email for verification link')
     } catch (error) {
       alert(error)

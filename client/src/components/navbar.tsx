@@ -1,8 +1,14 @@
 import { Navbar } from 'flowbite-react'
-import { Button } from '@/components/ui/button'
 import { LoginDialog } from './login/LoginDialog'
+import { useUserStore } from '@/store/userStore'
+import { Button } from '@/components/ui/button'
 
-export default function NavBar() {
+export default function NavBar({ token, setToken }) {
+  const handleLogout = () => {
+    setToken(false)
+    sessionStorage.removeItem('token')
+  }
+
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="/">
@@ -10,8 +16,12 @@ export default function NavBar() {
       </Navbar.Brand>
 
       <div className="flex md:order-2">
-        {/* <Button className="bg-black hover:bg-gray-800">Login</Button>{' '} */}
-        <LoginDialog />
+        {!token ? (
+          <LoginDialog setToken={setToken} />
+        ) : (
+          <Button onClick={handleLogout}>Logout</Button>
+        )}
+
         <Navbar.Toggle />
       </div>
 
