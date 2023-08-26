@@ -12,7 +12,11 @@ export const FilterSearch = () => {
         <SliderFilter step={0.5} min={1} max={12} label="Repayment Period" />
         <SliderFilter step={0.5} min={4} max={10} label="Interest Rate" />
         <SliderFilter step={5} min={1} max={50} label="Location Proximity" />
-        <Button onClick={resetSliders}>Reset</Button>
+
+        <Button className="mr-4">Search</Button>
+        <Button className="ml-4 bg-gray-500" onClick={resetSliders}>
+          Reset
+        </Button>
       </div>
     </>
   )
