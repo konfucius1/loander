@@ -9,8 +9,44 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Checkbox, Label, TextInput } from 'flowbite-react'
+import { useState } from 'react'
+import { supabase } from '../../lib/client'
 
 export function LoginDialog() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  })
+
+  console.log(formData)
+
+  function handleChange(event) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      }
+    })
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
+
+      if (error) throw error
+      console.log(data)
+
+      //   alert('Check your email for verification link')
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,23 +59,31 @@ export function LoginDialog() {
             Enter your credentials to access your account.
           </DialogDescription>
         </DialogHeader>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
             <TextInput
-              id="email1"
+              name="email"
+              id="email"
               placeholder="name@loander.com"
               required
               type="email"
+              onChange={handleChange}
             />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password1" value="Your password" />
             </div>
-            <TextInput id="password1" required type="password" />
+            <TextInput
+              name="password"
+              id="password"
+              required
+              type="password"
+              onChange={handleChange}
+            />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="remember" />
