@@ -1,5 +1,6 @@
 import { Navbar } from 'flowbite-react'
 import { Button } from '@/components/ui/button'
+import { LoginDialog } from './login/LoginDialog'
 
 export default function NavBar() {
   return (
@@ -9,7 +10,8 @@ export default function NavBar() {
       </Navbar.Brand>
 
       <div className="flex md:order-2">
-        <Button className="bg-black hover:bg-gray-800">Login</Button>{' '}
+        {/* <Button className="bg-black hover:bg-gray-800">Login</Button>{' '} */}
+        <LoginDialog />
         <Navbar.Toggle />
       </div>
 
