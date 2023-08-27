@@ -12,25 +12,18 @@ import { Checkbox, Label, TextInput } from 'flowbite-react'
 import { useState } from 'react'
 import { supabase } from '../../lib/client'
 import { SelectRole } from './SelectRole'
+import { SelectLocation } from './SelectLocation'
+import { id } from 'create-javascript-project'
+import { useFormDataStore } from '@/store/formDataStore'
 
 export function RegisterDialog() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-    role: '',
-    dateOfBirth: '',
-  })
+  const formData = useFormDataStore((state) => state)
+  const updateField = useFormDataStore((state) => state.updateField)
 
   console.log(formData)
 
   function handleChange(event) {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [event.target.name]: event.target.value,
-      }
-    })
+    updateField(event.target.name, event.target.value)
   }
 
   async function handleSubmit(e) {
@@ -40,17 +33,34 @@ export function RegisterDialog() {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-        options: {
-          data: {
-            full_name: formData.fullName,
-            role: formData.role,
-            date_of_birth: formData.dateOfBirth,
-          },
-        },
       })
 
       if (error) throw error
       console.log(data)
+      console.log(typeof data.user.id)
+      formData.userId = data.user.id
+      localStorage.setItem('userID', data.user.id)
+
+      // insert data into the profile table
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .insert([
+          {
+            user_id: formData.userId,
+            date_of_birth: formData.dateOfBirth,
+            full_name: formData.fullName,
+            bio: formData.bio,
+            role: formData.role,
+            location: formData.location,
+            loan_amount: formData.loanAmount,
+            interest_rate: formData.interestRate,
+            repayment_period: formData.repaymentPeriod,
+          },
+        ])
+
+      if (profileError) throw profileError
+
+      console.log('User and profile data inserted successfully!')
     } catch (error) {
       alert(error)
     }
@@ -75,7 +85,7 @@ export function RegisterDialog() {
                 id="fullName"
                 placeholder="your name"
                 required
-                type="fullName"
+                type="text"
                 onChange={handleChange}
               />
             </div>
@@ -111,11 +121,7 @@ export function RegisterDialog() {
           <div>
             <div className="mb-2 block">
               <Label htmlFor="role" value="Your role" />
-              <SelectRole
-                onChange={(selectedRole) => {
-                  setFormData((prev) => ({ ...prev, role: selectedRole }))
-                }}
-              />
+              <SelectRole onChange={handleChange} />
             </div>
           </div>
 
@@ -128,6 +134,28 @@ export function RegisterDialog() {
                 required
                 type="date"
                 onChange={handleChange}
+                value={formData.dateOfBirth}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="location" value="Your state" />
+              <SelectLocation onChange={handleChange} />
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="bio" value="Bio" />
+              <TextInput
+                name="bio"
+                id="bio"
+                required
+                type="text"
+                onChange={handleChange}
+                value={formData.bio}
               />
             </div>
           </div>
