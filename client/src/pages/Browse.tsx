@@ -1,4 +1,8 @@
 import { FilterSearch } from '@/components/browse/FilterSearch'
+import { Button } from '@/components/ui/button'
+import { useSliderStore } from '@/store/useSliderStore'
+import { useFormDataStore } from '@/store/formDataStore'
+import { supabase } from '../lib/client'
 
 const Header = () => {
   return (
@@ -13,12 +17,99 @@ const Header = () => {
   )
 }
 
+async function fetchUserData(userId) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('user_id', userId)
+
+  if (error) {
+    console.error('Error fetching user data:', error)
+    return null
+  }
+  return data ? data[0] : null // Assuming one row per user
+}
+
+const handleSubmit = async () => {
+  const userId = localStorage.getItem('userID')
+
+  if (userId) {
+    const userData = await fetchUserData(userId)
+    console.log(userData)
+
+    // Get values directly from the slider store
+    const sliderValues = useSliderStore.getState()
+
+    // Use a function to update the form data store based on the fetched data and slider values
+    updateFormDataWithFetchedData(userData, sliderValues)
+
+    // Log the updated form data
+    const formData = useFormDataStore.getState()
+    console.log(formData)
+
+    const interestRateTolerance = 2 // You can adjust this value based on how wide you want the range to be
+
+    let query = supabase.from('profiles').select('*')
+
+    // Adjust loan_amount based on slider
+    if (sliderValues.loanAmount !== 10000) {
+      // If not at max
+      query = query
+        .gte('loan_amount', sliderValues.loanAmount - 2000)
+        .lte('loan_amount', sliderValues.loanAmount + 2000)
+    } else {
+      query = query.gte('loan_amount', sliderValues.loanAmount - 2000)
+    }
+
+    query = query
+      .gte('repayment_period', sliderValues.repaymentPeriod - 3)
+      .lte('repayment_period', sliderValues.repaymentPeriod + 3)
+      .gte('interest_rate', sliderValues.interestRate - interestRateTolerance)
+      .lte('interest_rate', sliderValues.interestRate + interestRateTolerance)
+
+    if (userData.role === 'lender') {
+      query = query.neq('role', 'lender')
+    } else if (userData.role === 'borrower') {
+      query = query.neq('role', 'borrower')
+    }
+
+    const { data, error } = await query
+    if (error) {
+      console.error('Error fetching user data:', error)
+      return null
+    }
+
+    console.log(data)
+  }
+}
+
+const updateFormDataWithFetchedData = (userData, sliderValues) => {
+  const updateField = useFormDataStore.getState().updateField
+
+  // Using the updateField method to populate the formDataStore
+  updateField('userId', userData.user_id || '') // Assuming user_id is what's fetched from database
+  updateField('fullName', userData.full_name || '')
+  updateField('email', userData.email || '')
+  updateField('role', userData.role || '')
+  updateField('dateOfBirth', userData.date_of_birth || '1994-01-01')
+  updateField('bio', userData.bio || '')
+  updateField('location', userData.location || '')
+
+  // Update the formdatastore with the slider values
+  updateField('loanAmount', sliderValues.loanAmount)
+  updateField('repaymentPeriod', sliderValues.repaymentPeriod)
+  updateField('interestRate', sliderValues.interestRate)
+}
+
 export const Browse = () => {
   return (
     <>
       <div className="p-8">
         <Header />
         <FilterSearch />
+        <Button className="mr-4" onClick={handleSubmit}>
+          Search
+        </Button>
       </div>
     </>
   )

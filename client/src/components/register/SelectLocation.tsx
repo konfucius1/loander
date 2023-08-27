@@ -10,7 +10,7 @@ import {
 import { useFormDataStore } from '@/store/formDataStore'
 import { useState } from 'react'
 
-export function SelectRole() {
+export function SelectLocation() {
   // const [value, setValue] = useState('')
 
   // const handleValueChange = (newValue) => {
@@ -21,23 +21,26 @@ export function SelectRole() {
   //   }
   // }
 
-  const role = useFormDataStore((state) => state.role)
+  const location = useFormDataStore((state) => state.location)
   const updateField = useFormDataStore((state) => state.updateField)
 
   const handleValueChange = (newValue) => {
-    updateField('role', newValue)
+    updateField('location', newValue)
   }
 
   return (
-    <Select value={role} onValueChange={handleValueChange}>
+    <Select value={location} onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Choose your role" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>I want to be a...</SelectLabel>
-          <SelectItem value="lender">lender</SelectItem>
-          <SelectItem value="borrower">borrower</SelectItem>
+          <SelectItem value="melbourne">melbourne</SelectItem>
+          <SelectItem value="sydney">sydney</SelectItem>
+          <SelectItem value="brisbane">brisbane</SelectItem>
+          <SelectItem value="perth">perth</SelectItem>
+          <SelectItem value="adelaide">adelaide</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

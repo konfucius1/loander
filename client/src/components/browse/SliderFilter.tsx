@@ -47,6 +47,11 @@ export function SliderFilter({ label, min, max, step }: SliderFilterProps) {
         step={step}
         onValueChange={(values) => setSliderValue(sliderName, values[0])}
       />
+
+      {/* display the slider value */}
+      <div className="mt-2 text-sm text-gray-600">
+        Current value: {sliderValue}
+      </div>
     </div>
   )
 }
