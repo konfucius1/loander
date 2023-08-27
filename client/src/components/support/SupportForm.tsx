@@ -32,11 +32,7 @@ export function SupportForm() {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Your feedback</Label>
-              <Input
-                id="name"
-                placeholder="Enter text here..."
-                className="pb-36 pt-4"
-              />
+              <TextBox />
             </div>
           </div>
         </form>
@@ -46,4 +42,10 @@ export function SupportForm() {
       </CardFooter>
     </Card>
   );
+}
+
+import { Textarea } from '@/components/ui/textarea';
+
+export function TextBox() {
+  return <Textarea placeholder="Enter text here..." />;
 }
