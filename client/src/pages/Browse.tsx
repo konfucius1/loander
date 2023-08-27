@@ -47,30 +47,34 @@ const handleSubmit = async () => {
     const formData = useFormDataStore.getState()
     console.log(formData)
 
-    const interestRateTolerance = 2 // You can adjust this value based on how wide you want the range to be
+    const interestRateTolerance = 2
 
     let query = supabase.from('profiles').select('*')
 
-    // Adjust loan_amount based on slider
-    if (sliderValues.loanAmount !== 10000) {
-      // If not at max
+    // If the user is a borrower, we don't need to adjust based on loan_amount as lenders don't specify this
+    if (userData.role === 'borrower') {
       query = query
-        .gte('loan_amount', sliderValues.loanAmount - 2000)
-        .lte('loan_amount', sliderValues.loanAmount + 2000)
-    } else {
-      query = query.gte('loan_amount', sliderValues.loanAmount - 2000)
-    }
+        .gte('repayment_period', sliderValues.repaymentPeriod - 3)
+        .lte('repayment_period', sliderValues.repaymentPeriod + 3)
+        .gte('interest_rate', sliderValues.interestRate - interestRateTolerance)
+        .lte('interest_rate', sliderValues.interestRate + interestRateTolerance)
+        .neq('role', 'borrower')
+    } else if (userData.role === 'lender') {
+      // If the user is a lender, adjust loan_amount based on slider for searching borrowers
+      if (sliderValues.loanAmount !== 10000) {
+        query = query
+          .gte('loan_amount', sliderValues.loanAmount - 2000)
+          .lte('loan_amount', sliderValues.loanAmount + 2000)
+      } else {
+        query = query.gte('loan_amount', sliderValues.loanAmount - 2000)
+      }
 
-    query = query
-      .gte('repayment_period', sliderValues.repaymentPeriod - 3)
-      .lte('repayment_period', sliderValues.repaymentPeriod + 3)
-      .gte('interest_rate', sliderValues.interestRate - interestRateTolerance)
-      .lte('interest_rate', sliderValues.interestRate + interestRateTolerance)
-
-    if (userData.role === 'lender') {
-      query = query.neq('role', 'lender')
-    } else if (userData.role === 'borrower') {
-      query = query.neq('role', 'borrower')
+      query = query
+        .gte('repayment_period', sliderValues.repaymentPeriod - 3)
+        .lte('repayment_period', sliderValues.repaymentPeriod + 3)
+        .gte('interest_rate', sliderValues.interestRate - interestRateTolerance)
+        .lte('interest_rate', sliderValues.interestRate + interestRateTolerance)
+        .neq('role', 'lender')
     }
 
     const { data, error } = await query
