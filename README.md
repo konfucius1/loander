@@ -33,9 +33,9 @@ The global financial landscape is vast and diverse. Yet, many individuals find i
    git clone 
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the client directory:
    ```
-   cd loander
+   cd client
    ```
 
 3. Install dependencies
