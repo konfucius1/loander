@@ -52,7 +52,7 @@ export default function MatchHistory() {
       <div
         className="flex justify-center"
         style={{
-          marginBottom: '70px',
+          marginBottom: '20px',
           display: 'flex',
           justifyContent: 'center', // Center the cards horizontally
           gap: '20px', // Add gaps between the cards

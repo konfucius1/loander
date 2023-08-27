@@ -1,5 +1,7 @@
 import ActiveLoan from '@/components/Dashboard/ActiveLoan';
 import MatchHistory from '@/components/dashboard/MatchHistory';
+// import ProfileSetting from '@/components/dashboard/ProfileSetting';
+import AccountSetting from '@/components/dashboard/AccountSetting';
 import '../App.css';
 
 const Header = () => {
@@ -23,6 +25,8 @@ export const Dashboard = () => {
         <Header />
         <ActiveLoan />
         <MatchHistory />
+        {/* <ProfileSetting /> */}
+        <AccountSetting />
       </div>
     </>
   );

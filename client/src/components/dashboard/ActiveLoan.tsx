@@ -6,7 +6,7 @@ const cardsData = [
     name: 'Profile #1',
     borrower: false,
     amount_to_borrow: '',
-    amount_to_lend: 'AUD 340.00',
+    amount_to_lend: 'AUD 200.00',
     payment_due: '05-10-2023',
     description:
       "Sign up as a lender or borrower. Fill in your details, set your preferences, and you're good to go!",
@@ -15,7 +15,7 @@ const cardsData = [
     imageSrc: 'default_profile.svg',
     name: 'Profile #2',
     borrower: true,
-    amount_to_borrow: 'AUD 59.00',
+    amount_to_borrow: 'AUD 69.69',
     amount_to_lend: '',
     payment_due: '01-11-2023',
     description:
@@ -32,7 +32,7 @@ export default function ActiveLoan() {
       <div
         className="flex justify-center"
         style={{
-          marginBottom: '70px',
+          marginBottom: '20px',
           display: 'flex',
           justifyContent: 'center', // Center the cards horizontally
           gap: '20px', // Add gaps between the cards
