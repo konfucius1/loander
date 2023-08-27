@@ -30,7 +30,7 @@ The global financial landscape is vast and diverse. Yet, many individuals find i
 
 1. Clone this repository:
    ```
-   git clone [repository_link]
+   git clone 
    ```
 
 2. Navigate to the project directory:
@@ -38,11 +38,14 @@ The global financial landscape is vast and diverse. Yet, many individuals find i
    cd loander
    ```
 
-3. [Any other setup steps]
-
-4. Run the application:
+3. Install dependencies
    ```
-   [Commands to run the app]
+   npm install
+   ```
+
+5. Run the application:
+   ```
+   npm run dev
    ```
 
 ## Acknowledgments
