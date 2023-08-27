@@ -7,7 +7,7 @@ const cardsData = [
     borrower: false,
     amount_to_borrow: '',
     amount_to_lend: 'AUD 340.00',
-    payment_due: '05-10-2023',
+    transaction_completed: '05-08-2023',
     description:
       "Sign up as a lender or borrower. Fill in your details, set your preferences, and you're good to go!",
   },
@@ -17,17 +17,37 @@ const cardsData = [
     borrower: true,
     amount_to_borrow: 'AUD 59.00',
     amount_to_lend: '',
-    payment_due: '01-11-2023',
+    transaction_completed: '01-08-2023',
     description:
       "Swipe through profiles that fit your criteria. When both parties swipe right, it's a match!",
   },
+  {
+    imageSrc: 'default_profile.svg',
+    name: 'Profile #3',
+    borrower: true,
+    amount_to_borrow: 'AUD 37.00',
+    amount_to_lend: '',
+    transaction_completed: '23-07-2023',
+    description:
+      'Engage in encrypted conversations to discuss loan terms, amounts, and repayment plans.',
+  },
+  {
+    imageSrc: 'default_profile.svg',
+    name: 'Profile #4',
+    borrower: false,
+    amount_to_borrow: '',
+    amount_to_lend: 'AUD 200.00',
+    transaction_completed: '21-06-2023',
+    description:
+      'Once both parties come to an agreement, move forward with your financial transactions off-platform.',
+  },
 ];
 
-export default function ActiveLoan() {
+export default function MatchHistory() {
   return (
     <div>
       <div className="">
-        <h1 className="text-3xl font-medium">Active Loans</h1>
+        <h1 className="text-3xl font-medium">Match History</h1>
       </div>
       <div
         className="flex justify-center"
@@ -71,9 +91,9 @@ export default function ActiveLoan() {
                 {card.name}
               </h4>
               <div className="text-center">
-                <h5>Payment due:</h5>
+                <h5>Transaction completed:</h5>
                 <p className="mb-3 text-center dark:text-gray-400">
-                  {card.payment_due}
+                  {card.transaction_completed}
                 </p>
               </div>
             </div>

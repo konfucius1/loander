@@ -1,4 +1,5 @@
 import ActiveLoan from '@/components/Dashboard/ActiveLoan';
+import MatchHistory from '@/components/dashboard/MatchHistory';
 import '../App.css';
 
 const Header = () => {
@@ -21,8 +22,8 @@ export const Dashboard = () => {
       <div className="p-8">
         <Header />
         <ActiveLoan />
+        <MatchHistory />
       </div>
-      <div className="flex justify-center"></div>
     </>
   );
 };
