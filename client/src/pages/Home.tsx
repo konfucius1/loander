@@ -1,9 +1,9 @@
-import Hero from '@/components/home/hero'; // Import your Hero component
-import Intro from '@/components/home/intro';
-import How from '@/components/home/howitworks';
-import Testimonials from '@/components/home/testimonials';
-import Why from '@/components/home/whychooseloander';
-import '../App.css';
+import Hero from '@/components/home/hero' // Import your Hero component
+import Intro from '@/components/home/intro'
+import How from '@/components/home/howitworks'
+import Testimonials from '@/components/home/testimonials'
+import Why from '@/components/home/whychooseloander'
+import '../App.css'
 
 export function Home() {
   return (
@@ -23,5 +23,5 @@ export function Home() {
       <Why />
       <div className="line"></div> {/* Black line */}
     </div>
-  );
+  )
 }
