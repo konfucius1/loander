@@ -6,7 +6,7 @@ import { Support } from './pages/Support';
 import Footer from './components/footer';
 import { useEffect, useState } from 'react';
 import { Dashboard } from './pages/Dashboard';
-
+import { Matches } from './pages/Matches';
 export default function App() {
   const [token, setToken] = useState(false);
 
@@ -28,7 +28,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/browse" element={<Browse />} />
-          <Route path="/messages" element={<div>Messages</div>} />
+          <Route path="/messages" element={<Matches />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/support" element={<Support />} />
         </Routes>
